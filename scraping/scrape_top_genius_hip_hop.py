@@ -53,12 +53,12 @@ if __name__ == '__main__':
             # get and clean song title
             song_title = song.select('span.song_title')[0]\
                 .get_text().strip()
-            song_title = re.sub('\\s', '_', song_title)
+            song_title = re.sub('[\\s,]', '_', song_title)
             print(song_title)
             #get author
             song_artist = song.select('span.primary_artist_name')[0]\
                 .get_text().strip()
-            song_artist = re.sub('\\s', '_', song_artist)
+            song_artist = re.sub('[\\s,]', '_', song_artist)
             # get URL
             song_URL = song['href']
             
