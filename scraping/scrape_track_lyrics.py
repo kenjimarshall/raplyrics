@@ -29,18 +29,14 @@ if __name__ == '__main__':
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--incognito') # access in incognito
     options.add_argument('--headless')
-    driver = webdriver\
-        .Chrome(
-                executable_path = r'/mnt/c/Users/Cheng Lin/Documents/3.Coding/Python/raplyrics/scraping/chromedriver.exe',
-                options=options)
     
     # create file to hold song meta data
-    with open(output_folder + '/track_meta_data.csv',
-        encoding='utf-8', newline='', mode='w') as f:
-        writer = csv.writer(f)
-        writer.writerow(['song_title_cleaned', 'num_annotated', 
-                         'num_not_annotated', 'num_views'])
-    
+#    with open(output_folder + '/track_meta_data.csv',
+#        encoding='utf-8', newline='', mode='w') as f:
+#        writer = csv.writer(f)
+#        writer.writerow(['song_title_cleaned', 'num_annotated', 
+#                         'num_not_annotated', 'num_views'])
+    count = 0
     for song in song_links:
         song_title_cleaned = re.sub('[^a-zA-Z_]', '', song[0])
         song_arist_cleaned = re.sub('[^a-zA-Z_]', '', song[1])
@@ -89,6 +85,10 @@ if __name__ == '__main__':
         
         print('Scraping track popularity for: ' + song_file_name)
         # scrape track popularity info
+        driver = webdriver\
+            .Chrome(
+                executable_path = r'/mnt/c/Users/Cheng Lin/Documents/3.Coding/Python/raplyrics/scraping/chromedriver.exe',
+                options=options)
         driver.get(song_url)
         soup = BeautifulSoup(driver.page_source, 'html.parser')
         popularity = soup.select(
@@ -102,6 +102,9 @@ if __name__ == '__main__':
             encoding='utf-8', newline='', mode='a') as f:
             writer = csv.writer(f)
             writer.writerow(song_meta_data)
-
-    driver.quit()
+        
+        driver.quit()
+        count +=1
+        if count % 20:
+            time.sleep(300)
     
