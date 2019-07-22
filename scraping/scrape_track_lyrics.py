@@ -68,7 +68,7 @@ if __name__ == '__main__':
                 
                 # if bs4.element.Tag contains text
                 if isinstance(line, bs4.element.Tag) and line.get_text():
-                    if line.attrs and line.attrs['class']:
+                    if line.attrs and 'class' in line.attrs and line.attrs['class']:
                         line_list = re.split('[\\t\\n]', str(line.get_text()))
                         for entry in line_list:
                             writer.writerow([entry, 1])
