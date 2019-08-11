@@ -15,7 +15,7 @@ import os
 import pickle
 
 import numpy as np
-import fasttext
+# import fasttext
 
     
 def embed_inputs_fasttext(X_train_decoded, ft_model):
@@ -44,7 +44,7 @@ def embed_inputs_for_embedding_layer(X_train_decoded, tk):
     for sample in X_train_decoded:
         X_train_temp = []
         for word in sample:
-            X_train_temp.append(
-                0 if word not in word_to_int else word_to_int[word])
+            index = 0 if word not in word_to_int else word_to_int[word]
+            X_train_temp.append(index if index < 6000 else 0)
         X_train.append(np.array(X_train_temp))
     return np.array(X_train)
