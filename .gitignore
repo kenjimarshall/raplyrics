@@ -1,2 +1,4 @@
 scraping/chromedriver.exe
 __pycache__/
+static/node_modules
+npm-debug.log
