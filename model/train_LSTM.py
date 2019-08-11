@@ -10,7 +10,7 @@ from datetime import datetime
 
 import numpy as np
 
-import fasttext
+# import fasttext
 
 from keras.preprocessing.text import Tokenizer
 from keras.models import load_model
@@ -72,6 +72,6 @@ if __name__ == '__main__':
     y_val = np.load('training_data/y_val.npy')
     X_val = embed_inputs_for_embedding_layer(X_val_decoded, tk)
     
-    score = model.evaluate(X_val[0:100], y_val[0:100], batch_size=32)
+    score = model.evaluate(X_val, y_val, batch_size=32)
     model.save('model_%s.h5' % timestamp)
     print('score: %f' % score[1])
