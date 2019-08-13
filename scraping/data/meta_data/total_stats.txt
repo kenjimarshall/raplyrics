@@ -1,0 +1,12 @@
+
+Total Lines Annotated: 36148
+Total Not Annotated: 59873
+% Annotated Overall: 37.64593161912499
+
+Total Songs: 1150
+Total Annotated < 10%: 246
+Total Annotated < 5%: 155
+Total Annotated < 1%: 70
+% Annotated < 10%: 21.391304347826086
+% Annotated < 5%: 13.478260869565217
+% Annotated < 1%: 6.086956521739131
