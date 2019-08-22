@@ -1,9 +1,5 @@
-from flask import Flask
+from flask import Flask, jsonify
 from app.views import bp
-from app.predictor import Predictor
-
-
-predictor = Predictor()
 
 app = Flask(__name__)
 # app.secret_key = 'super secret string'  # Change this!
